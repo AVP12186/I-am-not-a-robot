@@ -1,0 +1,6 @@
+{
+  "name": "I'm Not A Robot - The CAPTCHA Game",
+  "description": "A parody CAPTCHA puzzle game inspired by Neal.fun. Prove you are a biological human through increasingly absurd challenges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
