@@ -1,18 +1,22 @@
 import React, { useEffect, useRef } from 'react';
-import { Award, RotateCcw, Share2, CheckCircle2 } from 'lucide-react';
+import { Award, RotateCcw, Share2, CheckCircle2, Sparkles } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 interface CertificateViewProps {
   onRestart: () => void;
+  onOpenChatGPT: () => void;
 }
 
-export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) => {
+export const CertificateView: React.FC<CertificateViewProps> = ({
+  onRestart,
+  onOpenChatGPT,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     sound.playSuccess();
 
-    // Canvas Confetti Burst
+    // Canvas Confetti Burst (grand celebration)
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -21,17 +25,18 @@ export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) =
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
 
-    const colors = ['#1a73e8', '#ea4335', '#fbbc05', '#34a853', '#9333ea', '#e11d48'];
-    const particles = Array.from({ length: 90 }).map(() => ({
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      vx: (Math.random() - 0.5) * 14,
-      vy: (Math.random() - 0.7) * 16,
-      size: Math.random() * 8 + 4,
+    const colors = ['#1a73e8', '#ea4335', '#fbbc05', '#34a853', '#9333ea', '#e11d48', '#06b6d4', '#10b981'];
+    // 140 colorful confetti particles
+    const particles = Array.from({ length: 140 }).map(() => ({
+      x: canvas.width / 2 + (Math.random() - 0.5) * 80,
+      y: canvas.height * 0.45,
+      vx: (Math.random() - 0.5) * 18,
+      vy: (Math.random() - 0.8) * 20,
+      size: Math.random() * 9 + 4,
       color: colors[Math.floor(Math.random() * colors.length)],
       alpha: 1,
       rotation: Math.random() * 360,
-      rotSpeed: (Math.random() - 0.5) * 10,
+      rotSpeed: (Math.random() - 0.5) * 14,
     }));
 
     let animId: number;
@@ -40,8 +45,8 @@ export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) =
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
-        p.vy += 0.35; // gravity
-        p.alpha -= 0.008;
+        p.vy += 0.38; // gravity
+        p.alpha -= 0.006;
         p.rotation += p.rotSpeed;
 
         if (p.alpha > 0) {
@@ -66,10 +71,10 @@ export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) =
 
   const handleShare = () => {
     sound.playClick();
-    const text = "I just beat all 20 levels of Neal.fun's CAPTCHA game without skipping and proved I am 100% biological human!";
+    const text = "I just beat all 100 levels of the CAPTCHA game without skipping and proved I am 100% biological human!";
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
-      alert('Result copied to clipboard!');
+      alert('Certificate summary copied to clipboard!');
     }
   };
 
@@ -80,7 +85,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) =
   });
 
   return (
-    <div className="relative w-full max-w-[420px] bg-white border-8 border-double border-amber-600/70 rounded-lg p-6 sm:p-8 shadow-2xl text-center overflow-hidden">
+    <div className="relative w-full max-w-[440px] bg-white border-8 border-double border-amber-600/70 rounded-lg p-6 sm:p-8 shadow-2xl text-center overflow-hidden">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none w-full h-full z-10"
@@ -88,7 +93,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) =
 
       {/* Certificate Header */}
       <div className="relative z-20">
-        <div className="inline-flex p-3 bg-amber-50 rounded-full border border-amber-300 text-amber-600 mb-3 shadow-sm">
+        <div className="inline-flex p-3 bg-amber-50 rounded-full border border-amber-300 text-amber-600 mb-3 shadow-sm animate-bounce">
           <Award className="w-10 h-10" />
         </div>
 
@@ -104,7 +109,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) =
         <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-serif italic mb-5">
           This document certifies that the operator has triumphed over{' '}
           <strong className="text-gray-900 font-sans font-bold">100 rigorous levels</strong> of botanical fruits disguised as vegetables,
-          pastry-canine ambiguity, Minecraft metallurgy, and analog motor calibration with{' '}
+          pastry-canine ambiguity, Waymo parallel parking, and existential trials with{' '}
           <strong className="text-gray-900 font-sans font-bold">ZERO level skipping</strong>.
         </p>
 
@@ -116,6 +121,18 @@ export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) =
           <div className="text-[11px] text-gray-500 mt-1">
             Issued on: {currentDate} · 100/100 Levels Conquered
           </div>
+        </div>
+
+        {/* Primary Call to Action: Proceed to ChatGPT */}
+        <div className="mb-3">
+          <button
+            type="button"
+            onClick={onOpenChatGPT}
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#10a37f] hover:bg-[#0e8e6e] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded shadow-md transition-all transform hover:scale-[1.02] ring-2 ring-emerald-400"
+          >
+            <Sparkles className="w-4 h-4" />
+            <span>Open ChatGPT (Claim Access) ➔</span>
+          </button>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5">
@@ -138,3 +155,4 @@ export const CertificateView: React.FC<CertificateViewProps> = ({ onRestart }) =
     </div>
   );
 };
+

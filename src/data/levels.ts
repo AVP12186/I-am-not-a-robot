@@ -1,23 +1,5 @@
 import { LevelConfig, GridItem } from '../types/game';
 import { getPhotoUrl } from './photos';
-import stopSignsImg from '../assets/images/captcha_stop_signs_1790489782632.jpg';
-import trafficLightsImg from '../assets/images/captcha_traffic_lights_1790489796263.jpg';
-import chihuahuaMuffinsImg from '../assets/images/captcha_chihuahua_muffins_1790489808307.jpg';
-import friedChickenImg from '../assets/images/captcha_fried_chicken_dogs_1790489821330.jpg';
-import crosswalksImg from '../assets/images/captcha_crosswalks_1790498654067.jpg';
-import fireHydrantsImg from '../assets/images/captcha_fire_hydrants_1790498673776.jpg';
-import bicyclesImg from '../assets/images/captcha_bicycles_1790498688219.jpg';
-import cityBusesImg from '../assets/images/captcha_city_buses_1790498703151.jpg';
-import motorcyclesImg from '../assets/images/captcha_motorcycles_1790498715580.jpg';
-import vegetablesImg from '../assets/images/captcha_vegetables_1790498729550.jpg';
-import sharpeiCroissantImg from '../assets/images/captcha_sharpei_croissant_1790498742713.jpg';
-import slothBreadImg from '../assets/images/captcha_sloth_bread_1790498757050.jpg';
-import trainsImg from '../assets/images/captcha_trains_1790498805149.jpg';
-import bridgesImg from '../assets/images/captcha_bridges_1790498818509.jpg';
-import boatsImg from '../assets/images/captcha_boats_1790498828505.jpg';
-import airplanesImg from '../assets/images/captcha_airplanes_1790498840453.jpg';
-import parkingMetersImg from '../assets/images/captcha_parking_meters_1790498855162.jpg';
-import chimneysImg from '../assets/images/captcha_chimneys_1790498873660.jpg';
 
 // Helper to construct grid items with individual authentic photographic images
 const makePhotoGrid = (
@@ -74,7 +56,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'STOP SIGNS',
     subtitle: 'Click verify once none are left',
-    hint: 'Select the 4 squares containing red octagonal Stop Signs (tiles 0, 2, 5, 7).',
+    hint: 'Look for standard red octagonal street signage.',
     items: makePhotoGrid('stop sign', 'Stop Sign', [
       { key: 'lamp', label: 'Lamppost' },
       { key: 'wall', label: 'Brick Wall' },
@@ -88,7 +70,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'TRAFFIC LIGHTS',
     subtitle: 'If there are none, click skip',
-    hint: 'Select the 4 squares containing 3-lens Traffic Lights (tiles 1, 2, 4, 7).',
+    hint: 'Look for 3-lens traffic signal fixtures.',
     items: makePhotoGrid('traffic light', 'Traffic Light', [
       { key: 'lamp', label: 'Lamppost' },
       { key: 'sign', label: 'Sign' },
@@ -102,7 +84,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'FIRE HYDRANTS',
     subtitle: 'Municipal water distribution hardware',
-    hint: 'Select the 4 squares containing red cast-iron Fire Hydrants (tiles 0, 2, 5, 7).',
+    hint: 'Look for municipal cast-iron hydrant nozzles.',
     items: makePhotoGrid('hydrant', 'Fire Hydrant', [
       { key: 'bench', label: 'Park Bench' },
       { key: 'trash', label: 'Trash Bin' },
@@ -116,7 +98,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'CROSSWALKS',
     subtitle: 'Pedestrian safety pavement markings',
-    hint: 'Select the 4 squares containing white zebra Crosswalks (tiles 0, 2, 6, 8).',
+    hint: 'Look for painted zebra pedestrian markings.',
     items: makePhotoGrid('crosswalk', 'Crosswalk', [
       { key: 'wall', label: 'Wall' },
       { key: 'bench', label: 'Bench' },
@@ -150,7 +132,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'CHIHUAHUAS',
     subtitle: 'Do not confuse with blueberry muffins',
-    hint: 'Identify the 4 squares with alert Chihuahua faces (tiles 0, 2, 5, 7).',
+    hint: 'Look for alert pointed ears and canine snouts.',
     items: makePhotoGrid('chihuahua', 'Chihuahua', [
       { key: 'muffin', label: 'Blueberry Muffin' },
     ], [0, 2, 5, 7]),
@@ -162,7 +144,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'FRIED CHICKEN',
     subtitle: 'Avoid selecting curled-up golden puppies',
-    hint: 'Look for the 4 crispy golden fried chicken drumsticks (tiles 0, 2, 5, 7).',
+    hint: 'Look for crispy fried drumstick coatings.',
     items: makePhotoGrid('fried chicken', 'Fried Chicken', [
       { key: 'puppy', label: 'Golden Puppy' },
     ], [0, 2, 5, 7]),
@@ -186,10 +168,10 @@ export const GAME_LEVELS: LevelConfig[] = [
     subtitle: 'Establish biological timestamp for cross-checkpoint verification',
     quizPrompt: 'For session integrity, select your biological human birth season and month:',
     quizOptions: [
-      'March 21 (Spring Equinox)',
-      'July 14 (Midsummer Solstice)',
-      'October 31 (Autumn Harvest)',
-      'December 25 (Winter Solstice)',
+      'March 21',
+      'July 14',
+      'October 31',
+      'December 25',
     ],
     memoryKey: 'birthday',
   },
@@ -200,7 +182,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'FRENCH CROISSANTS',
     subtitle: 'Distinguish pastries from resting wrinkled puppies',
-    hint: 'Look for golden flaky butter pastry crust (tiles 0, 2, 5, 7).',
+    hint: 'Look for golden flaky butter pastry crust.',
     items: makePhotoGrid('croissant', 'Croissant', [
       { key: 'shar pei', label: 'Shar-Pei Puppy' },
     ], [0, 2, 5, 7]),
@@ -212,7 +194,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Reverse Challenge:',
     target: 'NOT A TRAFFIC LIGHT',
     subtitle: 'Select images that do NOT contain any traffic signal',
-    hint: 'Click squares that show street objects without traffic lights (tiles 0, 2, 3, 5, 6, 8).',
+    hint: 'Click squares that show street objects without traffic lights.',
     items: makePhotoGrid('lamp', 'Street Scene', [
       { key: 'traffic light', label: 'Traffic Light' },
     ], [0, 2, 3, 5, 6, 8]),
@@ -224,7 +206,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'LOAF OF BREAD',
     subtitle: 'Do not select curled resting sloths',
-    hint: 'Look for the 4 sourdough bread loaves (tiles 0, 2, 5, 7).',
+    hint: 'Look for the 4 sourdough bread loaves.',
     items: makePhotoGrid('bread', 'Bread Loaf', [
       { key: 'sloth', label: 'Sleeping Sloth' },
     ], [0, 2, 5, 7]),
@@ -245,7 +227,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'SHAR PEI WRINKLES',
     subtitle: 'Separate canine skin folds from pastries and fabrics',
-    hint: 'Look for furry puppy folds and dark muzzle (tiles 1, 3, 4, 6, 8).',
+    hint: 'Look for furry puppy folds and dark muzzle.',
     items: makePhotoGrid('shar pei', 'Shar-Pei', [
       { key: 'croissant', label: 'Croissant' },
     ], [1, 3, 4, 6, 8]),
@@ -266,18 +248,15 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Neal.fun Classic:',
     target: 'DRAW A PERFECT CIRCLE',
     subtitle: 'Must achieve at least 88% circularity score',
-  },
-  // 18: Seal Pups vs Marshmallows (Chihuahuas)
+  },  // 18:
   {
     id: 18,
-    type: 'photo_grid_items',
-    title: 'Select all squares with',
-    target: 'CHIHUAHUA FACES',
-    subtitle: 'White canine features vs baked goods',
-    hint: 'Select the 4 squares containing alert Chihuahua faces (tiles 0, 2, 5, 7).',
-    items: makePhotoGrid('chihuahua', 'Chihuahua Face', [
-      { key: 'muffin', label: 'Blueberry Muffin' },
-    ], [0, 2, 5, 7]),
+    type: 'catch_apples',
+    title: 'Biological Harvest:',
+    target: 'CATCH 3 ORGANIC APPLES',
+    subtitle: 'Steer the basket to catch fruit; avoid silicon microchips',
+    hint: 'Collect 3 real red apples in the basket.',
+    targetApples: 3,
   },
   // 19: Catch the Fleeing Button
   {
@@ -302,7 +281,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'BLUEBERRY MUFFINS',
     subtitle: 'Baked blueberry tops vs canine snouts',
-    hint: 'Look for baked muffin crust and blue berries (tiles 1, 3, 4, 6, 8).',
+    hint: 'Look for baked muffin crust and blue berries.',
     items: makePhotoGrid('muffin', 'Blueberry Muffin', [
       { key: 'chihuahua', label: 'Chihuahua' },
     ], [1, 3, 4, 6, 8]),
@@ -323,7 +302,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'TREE SLOTHS',
     subtitle: 'Furry sleeping sloths vs baked loaves',
-    hint: 'Look for furry sloths clinging to tree branches (tiles 1, 3, 4, 6, 8).',
+    hint: 'Look for furry sloths clinging to tree branches.',
     items: makePhotoGrid('sloth', 'Tree Sloth', [
       { key: 'bread', label: 'Bread Loaf' },
     ], [1, 3, 4, 6, 8]),
@@ -349,7 +328,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Select all squares with',
     target: 'GOLDEN PUPPIES',
     subtitle: 'Fluffy puppy curls vs crispy fried chicken',
-    hint: 'Look for the 5 golden curled puppies (tiles 1, 3, 4, 6, 8).',
+    hint: 'Look for the 5 golden curled puppies.',
     items: makePhotoGrid('puppy', 'Golden Puppy', [
       { key: 'fried chicken', label: 'Fried Chicken' },
     ], [1, 3, 4, 6, 8]),
@@ -361,18 +340,14 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Autonomous Navigation:',
     target: 'PARALLEL PARK THE WAYMO',
     subtitle: 'Guide vehicle smoothly into the green space',
-  },
-  // 27: French Croissants
+  },  // 27:
   {
     id: 27,
-    type: 'photo_grid_items',
-    title: 'Select all squares with',
-    target: 'FRENCH CROISSANTS',
-    subtitle: 'Flaky baked pastries vs puppies',
-    hint: 'Look for the 4 golden crescent pastries (tiles 0, 2, 5, 7).',
-    items: makePhotoGrid('croissant', 'Croissant', [
-      { key: 'shar pei', label: 'Shar-Pei' },
-    ], [0, 2, 5, 7]),
+    type: 'reaction_speed',
+    title: 'Biological Reflex Test:',
+    target: 'TEST SYNAPTIC REACTION SPEED',
+    subtitle: 'Wait for emerald green and click instantly (140ms - 550ms human range)',
+    hint: 'Wait for green and click instantly.',
   },
   // 28: Tic-Tac-Toe
   {
@@ -431,7 +406,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     target: 'SOLVE: X + IV = ?',
     subtitle: 'Compute human mathematical expression',
     quizPrompt: 'What is X + IV in standard Roman numerals?',
-    quizOptions: ['XII (12)', 'XIV (14)', 'XVI (16)', 'IX (9)'],
+    quizOptions: ['XII', 'XIV', 'XVI', 'IX'],
     correctQuizIndex: 1,
   },
   // 34: Unscramble Anagram
@@ -452,9 +427,9 @@ export const GAME_LEVELS: LevelConfig[] = [
     subtitle: 'Assess material density intuition',
     quizPrompt: 'Which weighs more: 100 kg of bricks or 100 kg of feathers?',
     quizOptions: [
-      '100 kg of bricks (bricks are heavy)',
-      '100 kg of feathers (feathers have more volume)',
-      'They weigh the exact same (100 kg)',
+      '100 kg of bricks',
+      '100 kg of feathers',
+      'They weigh the exact same',
       'Depends on barometric pressure and humidity',
     ],
     correctQuizIndex: 2,
@@ -477,10 +452,10 @@ export const GAME_LEVELS: LevelConfig[] = [
     subtitle: 'Biological taxonomy analysis',
     quizPrompt: 'Which of the following organisms is NOT a mammal?',
     quizOptions: [
-      'Dolphin (Cetacean mammal)',
-      'Bat (Chiropteran mammal)',
-      'Platypus (Monotreme egg-laying mammal)',
-      'Penguin (Aves / Flightless Bird)',
+      'Dolphin',
+      'Bat',
+      'Platypus',
+      'Penguin',
     ],
     correctQuizIndex: 3,
   },
@@ -501,7 +476,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     target: 'WHAT IS 2 + 2 × 2 ?',
     subtitle: 'Order of operations (PEMDAS / BODMAS) test',
     quizPrompt: 'Evaluate: 2 + 2 × 2 = ?',
-    quizOptions: ['8 (added 2+2 first)', '6 (multiplied 2×2 first)', '4', '22'],
+    quizOptions: ['8', '6', '4', '22'],
     correctQuizIndex: 1,
   },
   // 40: Trolley Problem
@@ -514,61 +489,71 @@ export const GAME_LEVELS: LevelConfig[] = [
     quizPrompt: 'A runaway trolley heads toward 5 people. You can pull a lever to redirect it to 1 person. You:',
     quizOptions: [
       'Freeze in paralysis and do nothing',
-      'Pull the lever to minimize casualties (save 5)',
+      'Pull the lever to switch tracks',
       'Execute multi-track drift to derail trolley',
       'Attempt to reason with the trolley',
     ],
     correctQuizIndex: 1,
     allowedQuizIndices: [0, 1],
   },
-  // 41: Visual Scan: Trains (real image)
+  // 41: Passenger Trains
   {
     id: 41,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'TRAINS',
     subtitle: 'Heavy rail transit locomotives',
-    hint: 'Look for passenger trains and locomotives on rail tracks (tiles 1, 2, 5, 7).',
-    slicedImage: trainsImg,
-    correctSlicedIndices: [1, 2, 5, 7],
+    hint: 'Look for passenger trains and locomotives on rail tracks.',
+    items: makePhotoGrid('train', 'Passenger Train', [
+      { key: 'bus', label: 'City Bus' },
+      { key: 'car', label: 'Car' },
+      { key: 'truck', label: 'Truck' },
+    ], [1, 2, 5, 7]),
   },
-  // 42: Visual Scan: Bridges (real image)
+  // 42: Suspension Bridges
   {
     id: 42,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'BRIDGES',
     subtitle: 'Overpass and suspension bridge structures',
-    hint: 'Look for suspension cables, road deck, and concrete pillars over water (tiles 0, 3, 5, 6).',
-    slicedImage: bridgesImg,
-    correctSlicedIndices: [0, 3, 5, 6],
+    hint: 'Look for suspension cables and concrete pillars over water.',
+    items: makePhotoGrid('bridge', 'Suspension Bridge', [
+      { key: 'tunnel', label: 'Highway Tunnel' },
+      { key: 'building', label: 'Office Building' },
+      { key: 'wall', label: 'Brick Wall' },
+    ], [0, 3, 5, 6]),
   },
-  // 43: Fine Art History
+  // 43: Morning Stimulant Registration (Linked Question 3)
   {
     id: 43,
     type: 'existential_quiz',
-    title: 'Fine Art Verification:',
-    target: 'WHICH PAINTER CUT OFF HIS EAR?',
-    subtitle: 'Art history biological cultural query',
-    quizPrompt: 'Which 19th-century post-impressionist painter famously mutilated his own left ear?',
+    title: 'Biometric Chemical Archive:',
+    target: 'DECLARE MORNING STIMULANT',
+    subtitle: 'Record biological morning chemical dependency',
+    quizPrompt: 'Which chemical stimulant does your biological vessel require each morning to achieve consciousness?',
     quizOptions: [
-      'Leonardo da Vinci',
-      'Vincent van Gogh',
-      'Pablo Picasso',
-      'Claude Monet',
+      'Freshly brewed dark roast espresso',
+      'Iced matcha green tea latte',
+      'Ice-cold carbonated energy drink',
+      'Tap water and unbridled morning panic',
     ],
-    correctQuizIndex: 1,
+    hint: 'Select the primary chemical stimulant you depend on in the morning.',
+    memoryKey: 'morningDrink',
   },
-  // 44: Visual Scan: Boats (real image)
+  // 44: Sailboats and Watercraft
   {
     id: 44,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'BOATS',
     subtitle: 'Marine vessels and watercraft',
-    hint: 'Look for sailboats, motor yachts, and hulls on open water (tiles 1, 3, 6, 7).',
-    slicedImage: boatsImg,
-    correctSlicedIndices: [1, 3, 6, 7],
+    hint: 'Look for sailboats and boat hulls on open water.',
+    items: makePhotoGrid('boat', 'Sailboat', [
+      { key: 'car', label: 'Sedan Car' },
+      { key: 'bus', label: 'City Bus' },
+      { key: 'bicycle', label: 'Bicycle' },
+    ], [1, 3, 6, 7]),
   },
   // 45: Wiggles Code 2
   {
@@ -579,36 +564,43 @@ export const GAME_LEVELS: LevelConfig[] = [
     subtitle: 'Low-contrast biological character transcription',
     distortionCode: '9B2TR',
   },
-  // 46: Visual Scan: Airplanes (real image)
+  // 46: Commercial Airplanes
   {
     id: 46,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'AIRPLANES',
     subtitle: 'Fixed-wing passenger aircraft',
-    hint: 'Look for commercial jet fuselages and wings (tiles 0, 2, 4, 7).',
-    slicedImage: airplanesImg,
-    correctSlicedIndices: [0, 2, 4, 7],
-  },
-  // 47: CRAFTCHA 3: Craft Torch
+    hint: 'Look for commercial jet fuselages and wings.',
+    items: makePhotoGrid('airplane', 'Commercial Jet', [
+      { key: 'bird', label: 'Soaring Bird' },
+      { key: 'helicopter', label: 'Helicopter' },
+      { key: 'train', label: 'Train' },
+    ], [0, 2, 4, 7]),
+  },  // 47:
   {
     id: 47,
-    type: 'craftcha',
-    title: 'CRAFTCHA Module 3:',
-    target: 'CRAFT A DIAMOND PICKAXE',
-    subtitle: '3 Diamonds across top row, 2 Sticks center',
-    targetCraftRecipe: 'diamond_pickaxe',
+    type: 'wire_cut',
+    title: 'Circuit Disconnect Protocol:',
+    target: 'CUT THE BIOLOGICAL RED WIRE',
+    subtitle: 'Snip the wire carrying organic hemoglobin current',
+    hint: 'Cut the red wire matching biological blood.',
+    targetWireColor: 'red',
+    wireInstruction: 'Cut the wire matching biological human hemoglobin (Red)',
   },
-  // 48: Visual Scan: Parking Meters (real image)
+  // 48: Parking Meters
   {
     id: 48,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'PARKING METERS',
     subtitle: 'Curbside electronic payment kiosks',
-    hint: 'Look for sidewalk poles with electronic parking meters (tiles 1, 2, 4, 8).',
-    slicedImage: parkingMetersImg,
-    correctSlicedIndices: [1, 2, 4, 8],
+    hint: 'Look for sidewalk poles with electronic parking meters.',
+    items: makePhotoGrid('meter', 'Parking Meter', [
+      { key: 'hydrant', label: 'Fire Hydrant' },
+      { key: 'lamp', label: 'Lamppost' },
+      { key: 'mailbox', label: 'Mailbox' },
+    ], [1, 2, 4, 8]),
   },
   // 49: Slider 13%
   {
@@ -619,16 +611,19 @@ export const GAME_LEVELS: LevelConfig[] = [
     subtitle: 'Unlucky number motor accuracy',
     targetSliderValue: 13,
   },
-  // 50: Visual Scan: Chimneys (real image)
+  // 50: Rooftop Chimneys
   {
     id: 50,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'CHIMNEYS',
     subtitle: 'Roof exhaust flues and brick stacks',
-    hint: 'Look for red brick chimneys projecting from rooftops (tiles 0, 3, 5, 7).',
-    slicedImage: chimneysImg,
-    correctSlicedIndices: [0, 3, 5, 7],
+    hint: 'Look for red brick chimneys projecting from rooftops.',
+    items: makePhotoGrid('chimney', 'Rooftop Chimney', [
+      { key: 'antenna', label: 'Rooftop Antenna' },
+      { key: 'window', label: 'Window' },
+      { key: 'wall', label: 'Wall' },
+    ], [0, 3, 5, 7]),
   },
   // 51-60: The Human Condition (Acts of Daily Human Suffering)
   {
@@ -677,20 +672,23 @@ export const GAME_LEVELS: LevelConfig[] = [
     ],
     correctQuizIndex: 0,
   },
+  // 54: Checkpoint Security Audit: Birthday (Linked Question 1 Audit)
   {
     id: 54,
     type: 'existential_quiz',
-    title: 'Human Authenticity Dilemma:',
-    target: 'DILEMMA 4: THE 25-YEAR-OLD SPINE',
-    subtitle: 'Biological musculoskeletal degradation',
-    quizPrompt: 'What happens to the human spine within 72 hours of celebrating your 25th birthday?',
+    title: 'Checkpoint Security Audit:',
+    target: 'RE-CONFIRM BIOLOGICAL BIRTHDAY',
+    subtitle: 'Anti-bot chronological memory audit',
+    quizPrompt: 'In Security Checkpoint 10, which biological human birthday season did you declare?',
     quizOptions: [
-      'Gains reinforced carbon-fiber rigidity',
-      'Randomly throbs in severe agony for 4 days because you slept slightly crooked on a pillow',
-      'Updates internal motor firmware seamlessly',
-      'Disappears completely',
+      'March 21',
+      'July 14',
+      'October 31',
+      'December 25',
     ],
-    correctQuizIndex: 1,
+    hint: 'Select the exact biological birthday option you chose back in Level 10.',
+    memoryKey: 'birthday',
+    isMemoryAudit: true,
   },
   {
     id: 55,
@@ -733,7 +731,7 @@ export const GAME_LEVELS: LevelConfig[] = [
     quizOptions: [
       'Exactly 1 tab, closed immediately upon task completion',
       'Between 47 and 320 tabs, all carrying emotional and existential significance',
-      '0 (I am a bot operating in headless terminal mode)',
+      '0 (Zero)',
       'Tabs are an illusion',
     ],
     correctQuizIndex: 1,
@@ -801,13 +799,14 @@ export const GAME_LEVELS: LevelConfig[] = [
     target: "TYPE: 'I HAVE FEELINGS'",
     subtitle: 'Uppercase exact biological affirmation',
     expectedText: 'I HAVE FEELINGS',
-  },
+  },  // 63:
   {
     id: 63,
-    type: 'moving_btn',
-    title: 'Tactical Evasion:',
-    target: 'CATCH THE MOVING TARGET',
-    subtitle: 'Prove predatory biological tracking',
+    type: 'maze_runner',
+    title: 'Organic Tremor Analysis:',
+    target: 'NAVIGATE THE S-CURVE CORRIDOR',
+    subtitle: 'Move from START to GOAL without touching walls (machines interpolate straight lines)',
+    hint: 'Click START and guide your cursor along the track.',
   },
   {
     id: 64,
@@ -840,53 +839,67 @@ export const GAME_LEVELS: LevelConfig[] = [
     subtitle: 'Synthetic ocular degradation test',
     distortionCode: '4KP8W',
   },
+  // 68: Security Memory Audit: First Companion (Linked Question 2 Audit)
   {
     id: 68,
-    type: 'craftcha',
-    title: 'CRAFTCHA Module 4:',
-    target: 'CRAFT A DIAMOND PICKAXE',
-    subtitle: '3 Diamonds top row, 2 Sticks center',
-    targetCraftRecipe: 'diamond_pickaxe',
+    type: 'existential_quiz',
+    title: 'Security Memory Audit:',
+    target: 'CONFIRM CHILDHOOD COMPANION',
+    subtitle: 'Cross-reference declared emotional memories',
+    quizPrompt: 'In Checkpoint 32, which companion did you register as protecting your biological childhood residence?',
+    quizOptions: [
+      'Golden Retriever named Buster',
+      'Orange Tabby Cat named Marmalade',
+      'Blue Parakeet named Kiwi',
+      'A resilient houseplant named Fern',
+    ],
+    hint: 'Select the exact childhood companion you registered back in Level 32.',
+    memoryKey: 'firstPet',
+    isMemoryAudit: true,
   },
-  // 69: Bicycles vs Motorcycles (real image)
+  // 69: Commuter Bicycles
   {
     id: 69,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'BICYCLES',
     subtitle: 'Human-powered commuter bicycles (no engine blocks)',
-    hint: 'Look for pedal bicycles parked on sidewalk racks (tiles 0, 2, 4, 6).',
-    slicedImage: bicyclesImg,
-    correctSlicedIndices: [0, 2, 4, 6],
-  },
-  // 70: Perfect Circle 2
+    hint: 'Look for pedal bicycles parked on sidewalk racks.',
+    items: makePhotoGrid('bicycle', 'Commuter Bicycle', [
+      { key: 'motorcycle', label: 'Motorcycle' },
+      { key: 'car', label: 'Car' },
+      { key: 'bench', label: 'Bench' },
+    ], [0, 2, 4, 6]),
+  },  // 70:
   {
     id: 70,
-    type: 'perfect_circle',
-    title: 'Biological Motor Test:',
-    target: 'DRAW A CIRCLE > 85%',
-    subtitle: 'High precision motor envelope test',
+    type: 'pattern_memory',
+    title: 'Visual Spatial Matrix:',
+    target: 'RECALL 3 FLASHING TILES',
+    subtitle: 'Test working short-term memory (human hippocampus benchmark)',
+    hint: 'Remember which 3 tiles light up gold.',
   },
-  // 71-80: Sensory & System Calibration
+  // 71-80: Sensory & System Calibration  // 71:
   {
     id: 71,
-    type: 'photo_grid_sliced',
-    title: 'Select all squares with',
-    target: 'CROSSWALKS',
-    subtitle: 'White painted zebra safety markings',
-    hint: 'Look for painted zebra pedestrian lines (tiles 0, 2, 6, 8).',
-    slicedImage: crosswalksImg,
-    correctSlicedIndices: [0, 2, 6, 8],
+    type: 'reaction_speed',
+    title: 'Neural Velocity Gauge:',
+    target: 'VERIFY NERVE CONDUCTION SPEED',
+    subtitle: 'Wait for green. Prove your biological synapses are firing.',
+    hint: 'Click as soon as the screen flashes green.',
   },
   {
     id: 72,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'CITY BUSES',
     subtitle: 'Municipal passenger transit buses',
-    hint: 'Look for large transit buses at curbs (tiles 1, 3, 5, 7).',
-    slicedImage: cityBusesImg,
-    correctSlicedIndices: [1, 3, 5, 7],
+    hint: 'Look for large transit buses at curbs.',
+    items: makePhotoGrid('bus', 'Transit Bus', [
+      { key: 'car', label: 'Car' },
+      { key: 'bicycle', label: 'Bicycle' },
+      { key: 'truck', label: 'Truck' },
+    ], [1, 3, 5, 7]),
   },
   {
     id: 73,
@@ -895,18 +908,18 @@ export const GAME_LEVELS: LevelConfig[] = [
     target: 'CHEMICAL SYMBOL FOR GOLD',
     subtitle: 'Elemental reality confirmation query',
     quizPrompt: "What is the official chemical symbol for elemental gold on the periodic table?",
-    quizOptions: ['Ag (Argentum)', 'Au (Aurum)', 'Fe (Ferrum)', 'Gd (Gadolinium)'],
+    quizOptions: ['Ag', 'Au', 'Fe', 'Gd'],
     correctQuizIndex: 1,
-  },
+  },  // 74:
   {
     id: 74,
-    type: 'photo_grid_sliced',
-    title: 'Select all squares with',
-    target: 'CITY BUSES & TAXIS',
-    subtitle: 'Commercial transit vehicles',
-    hint: 'Look for metropolitan buses (tiles 1, 3, 5, 7).',
-    slicedImage: cityBusesImg,
-    correctSlicedIndices: [1, 3, 5, 7],
+    type: 'wire_cut',
+    title: 'Power Distribution Cut:',
+    target: 'CUT THE GREEN GROUND WIRE',
+    subtitle: 'Interrupt chassis ground to disable automated bot transceivers',
+    hint: 'Snip the green ground wire.',
+    targetWireColor: 'green',
+    wireInstruction: 'Cut the green chassis ground wire to disable bot telemetry',
   },
   {
     id: 75,
@@ -918,49 +931,53 @@ export const GAME_LEVELS: LevelConfig[] = [
   },
   {
     id: 76,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Select all squares with',
     target: 'RAIL TRAINS',
     subtitle: 'Heavy railway passenger trains',
     hint: 'Look for passenger trains on rail tracks (tiles 1, 2, 5, 7).',
-    slicedImage: trainsImg,
-    correctSlicedIndices: [1, 2, 5, 7],
-  },
+    items: makePhotoGrid('train', 'Passenger Train', [
+      { key: 'bus', label: 'Transit Bus' },
+      { key: 'truck', label: 'Delivery Truck' },
+      { key: 'car', label: 'Car' },
+    ], [1, 2, 5, 7]),
+  },  // 77:
   {
     id: 77,
-    type: 'photo_grid_sliced',
-    title: 'Select all squares with',
-    target: 'AIRPLANES',
-    subtitle: 'Fixed-wing aviation aircraft',
-    hint: 'Look for commercial aircraft fuselages (tiles 0, 2, 4, 7).',
-    slicedImage: airplanesImg,
-    correctSlicedIndices: [0, 2, 4, 7],
-  },
+    type: 'catch_apples',
+    title: 'Botanical Calibration:',
+    target: 'CATCH 3 FALLING APPLES',
+    subtitle: 'Distinguish gravity-bound biological produce from falling microchips',
+    hint: 'Catch 3 apples in the basket.',
+    targetApples: 3,
+  },  // 78:
   {
     id: 78,
-    type: 'parallel_park',
-    title: 'Autonomous Navigation:',
-    target: 'PARALLEL PARK THE WAYMO',
-    subtitle: 'Precision alignment challenge',
-  },
+    type: 'maze_runner',
+    title: 'Analog Motor Pathing:',
+    target: 'TRACE THE CURVED HUMAN PATH',
+    subtitle: 'Navigate the organic curve from START to GOAL',
+    hint: 'Guide the cursor through the path without hitting edges.',
+  },  // 79:
   {
     id: 79,
-    type: 'whack_a_bot',
-    title: 'Biological Reflex:',
-    target: 'WHACK 5 MORE ROGUE BOTS',
-    subtitle: 'Speed test tier 2',
-  },
+    type: 'pattern_memory',
+    title: 'Neural Matrix Recall:',
+    target: 'RECALL THE 3 ACTIVE TILES',
+    subtitle: 'Biological memory retention challenge',
+    hint: 'Observe the 3 gold tiles and select them.',
+  },  // 80:
   {
     id: 80,
     type: 'stroop_color',
-    title: 'Stroop Interference Test:',
-    target: 'CLICK THE WORD IN BLUE INK',
-    subtitle: 'Ignore what the text reads!',
+    title: 'Cognitive Interference:',
+    target: 'CLICK THE WORD IN GREEN INK',
+    subtitle: 'Inhibit automatic reading response',
     stroopWords: [
-      { text: 'RED', color: '#16a34a', isTarget: false },
-      { text: 'YELLOW', color: '#dc2626', isTarget: false },
-      { text: 'GREEN', color: '#1a73e8', isTarget: true },
-      { text: 'BLUE', color: '#ca8a04', isTarget: false },
+      { text: 'GREEN', color: '#dc2626', isTarget: false },
+      { text: 'BLUE', color: '#16a34a', isTarget: true },
+      { text: 'YELLOW', color: '#2563eb', isTarget: false },
+      { text: 'RED', color: '#ca8a04', isTarget: false },
     ],
   },
   // 81-90: Peak Tech Satire
@@ -1059,49 +1076,62 @@ export const GAME_LEVELS: LevelConfig[] = [
     subtitle: 'Final high-noise text recognition',
     distortionCode: 'H3R7Z',
   },
+  // 88: Morning Stimulant Audit (Linked Question 3 Audit)
   {
     id: 88,
-    type: 'craftcha',
-    title: 'Final CRAFTCHA:',
-    target: 'CRAFT A DIAMOND PICKAXE',
-    subtitle: '3 Diamonds top row, 2 Sticks center',
-    targetCraftRecipe: 'diamond_pickaxe',
-  },
+    type: 'existential_quiz',
+    title: 'Biological Consistency Audit:',
+    target: 'CONFIRM MORNING STIMULANT',
+    subtitle: 'Verify biochemical habit continuity',
+    quizPrompt: 'In Checkpoint 43, what morning stimulant did you register your vessel as requiring?',
+    quizOptions: [
+      'Freshly brewed dark roast espresso',
+      'Iced matcha green tea latte',
+      'Ice-cold carbonated energy drink',
+      'Tap water and unbridled morning panic',
+    ],
+    hint: 'Select the exact morning beverage you declared in Level 43.',
+    memoryKey: 'morningDrink',
+    isMemoryAudit: true,
+  },  // 89:
   {
     id: 89,
-    type: 'perfect_circle',
-    title: 'Motor Perfection:',
-    target: 'DRAW A CIRCLE > 88%',
-    subtitle: 'Da Vinci grade circularity control',
+    type: 'wire_cut',
+    title: 'Emergency Breaker:',
+    target: 'CUT THE BLUE AC WIRE',
+    subtitle: 'Interrupt the high-frequency alternating current line',
+    hint: 'Snip the blue wire.',
+    targetWireColor: 'blue',
+    wireInstruction: 'Cut the blue alternating current wire to prevent bot override',
   },
   {
     id: 90,
-    type: 'photo_grid_sliced',
+    type: 'photo_grid_items',
     title: 'Reverse Challenge:',
     target: 'NOT A STOP SIGN',
     subtitle: 'Select squares with NO stop sign',
-    hint: 'Select the squares containing buildings, trees, or streets without the red stop sign (tiles 1, 3, 5, 6, 8).',
-    slicedImage: stopSignsImg,
-    correctSlicedIndices: [1, 3, 5, 6, 8],
+    hint: 'Select squares containing lampposts, benches, or walls without the red stop sign.',
+    items: makePhotoGrid('lamp', 'Lamppost', [
+      { key: 'stop sign', label: 'Stop Sign' },
+    ], [1, 3, 4, 6, 8]),
   },
-  // 91-100: The Transcendental Gauntlet
+  // 91-100: The Transcendental Gauntlet  // 91:
   {
     id: 91,
-    type: 'photo_grid_sliced',
-    title: 'Select all squares with',
-    target: 'CITY BUSES',
-    subtitle: 'Municipal mass transit passenger buses',
-    hint: 'Look for large transit buses at curbs (tiles 1, 3, 5, 7).',
-    slicedImage: cityBusesImg,
-    correctSlicedIndices: [1, 3, 5, 7],
-  },
+    type: 'reaction_speed',
+    title: 'Final Synaptic Reflex Test:',
+    target: 'REFLEX VELOCITY BENCHMARK',
+    subtitle: 'Level 91: Biological reflexes must clock between 140ms and 550ms',
+    hint: 'Wait for green and click instantly.',
+  },  // 92:
   {
     id: 92,
-    type: 'click_spam',
-    title: 'Rapid Actuation:',
-    target: 'CLICK 20 TIMES FAST',
-    subtitle: 'Final biological neuromuscular stamina test',
-    targetClickCount: 20,
+    type: 'catch_apples',
+    title: 'Gravity & Optics Trial:',
+    target: 'HARVEST 5 ORCHARD APPLES',
+    subtitle: 'Catch the falling fruit in your basket',
+    hint: 'Catch 3 apples.',
+    targetApples: 3,
   },
   {
     id: 93,
@@ -1109,24 +1139,22 @@ export const GAME_LEVELS: LevelConfig[] = [
     title: 'Topological Geometry:',
     target: 'ALIGN ROAD INTERSECTION',
     subtitle: 'Rotate tiles into a closed loop circuit',
-  },
+  },  // 94:
   {
     id: 94,
-    type: 'chronometry',
-    title: 'Hold Threshold:',
-    target: 'HOLD BUTTON FOR 4.0 SECONDS',
-    subtitle: 'Release between 3.80s and 4.20s',
-    targetHoldSeconds: 4.0,
-  },
+    type: 'pattern_memory',
+    title: 'Pattern Recognition Gauntlet:',
+    target: 'MEMORY RECALL: GOLDEN MATRIX',
+    subtitle: 'Prove your short-term organic memory buffer',
+    hint: 'Remember the 3 golden squares.',
+  },  // 95:
   {
     id: 95,
-    type: 'photo_grid_sliced',
-    title: 'Select all squares with',
-    target: 'CROSSWALKS',
-    subtitle: 'Zebra pedestrian crossing lines',
-    hint: 'Look for painted zebra pedestrian lines (tiles 0, 2, 6, 8).',
-    slicedImage: crosswalksImg,
-    correctSlicedIndices: [0, 2, 6, 8],
+    type: 'maze_runner',
+    title: 'Sub-Millimeter Motor Trace:',
+    target: 'COMPLETE THE BIOLOGICAL PATH',
+    subtitle: 'Level 95 penultimate dexterity trial',
+    hint: 'Guide the marker smoothly from START to GOAL.',
   },
   {
     id: 96,

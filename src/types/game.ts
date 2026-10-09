@@ -18,6 +18,11 @@ export type ChallengeType =
   | 'moving_btn'
   | 'click_spam'
   | 'text_exact'
+  | 'reaction_speed'
+  | 'wire_cut'
+  | 'maze_runner'
+  | 'catch_apples'
+  | 'pattern_memory'
   | 'certificate';
 
 export interface GridItem {
@@ -75,4 +80,11 @@ export interface LevelConfig {
   allowedQuizIndices?: number[];
   memoryKey?: 'birthday' | 'firstPet' | 'morningDrink';
   isMemoryAudit?: boolean;
+
+  // For wire cut
+  targetWireColor?: string;
+  wireInstruction?: string;
+
+  // For catch apples
+  targetApples?: number;
 }

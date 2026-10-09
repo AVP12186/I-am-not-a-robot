@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { RotateCw, Headphones, Info, Check } from 'lucide-react';
 import { GAME_LEVELS } from './data/levels';
 import { sound } from './utils/sound';
@@ -26,6 +26,13 @@ import { ExistentialQuizChallenge } from './components/challenges/ExistentialQui
 import { MovingBtnChallenge } from './components/challenges/MovingBtnChallenge';
 import { ClickSpamChallenge } from './components/challenges/ClickSpamChallenge';
 import { TextExactChallenge } from './components/challenges/TextExactChallenge';
+import { ReactionSpeedChallenge } from './components/challenges/ReactionSpeedChallenge';
+import { WireCutChallenge } from './components/challenges/WireCutChallenge';
+import { MazeRunnerChallenge } from './components/challenges/MazeRunnerChallenge';
+import { CatchApplesChallenge } from './components/challenges/CatchApplesChallenge';
+import { PatternMemoryChallenge } from './components/challenges/PatternMemoryChallenge';
+import { FakeChatGPTView } from './components/FakeChatGPTView';
+import { NewTabPromptModal } from './components/NewTabPromptModal';
 
 export default function App() {
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);
@@ -36,6 +43,8 @@ export default function App() {
   // Modal sub-dialogs
   const [showAudioModal, setShowAudioModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
+  const [showFakeChatGPT, setShowFakeChatGPT] = useState(false);
+  const [showNewTabPrompt, setShowNewTabPrompt] = useState<boolean>(true);
 
   // Error feedback
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -59,11 +68,35 @@ export default function App() {
   const [movingBtnCaptured, setMovingBtnCaptured] = useState(false);
   const [clickSpamDone, setClickSpamDone] = useState(false);
   const [textExactVal, setTextExactVal] = useState('');
+  const [reactionSpeedPassed, setReactionSpeedPassed] = useState(false);
+  const [wireCutPassed, setWireCutPassed] = useState(false);
+  const [mazeRunnerPassed, setMazeRunnerPassed] = useState(false);
+  const [catchApplesPassed, setCatchApplesPassed] = useState(false);
+  const [patternMemoryPassed, setPatternMemoryPassed] = useState(false);
   const [userMemory, setUserMemory] = useState<Record<string, string>>({});
 
   const currentLevel = GAME_LEVELS[currentLevelIndex];
   const isLastLevel = currentLevel.type === 'certificate';
   const humanityBadge = getHumanityRank(currentLevelIndex);
+
+  // Restore level and tab status from URL query params on mount
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const lvlParam = params.get('level');
+      if (lvlParam) {
+        const parsedLvl = parseInt(lvlParam, 10);
+        if (!isNaN(parsedLvl) && parsedLvl >= 1 && parsedLvl <= GAME_LEVELS.length) {
+          setIsInitialCheckboxChecked(true);
+          setIsModalOpen(true);
+          setCurrentLevelIndex(parsedLvl - 1);
+        }
+      }
+      if (params.get('tab') === 'opened') {
+        sessionStorage.setItem('captcha_tab_opened', 'true');
+      }
+    } catch {}
+  }, []);
 
   // Trigger error shake & audio
   const triggerError = useCallback((msg: string) => {
@@ -93,6 +126,11 @@ export default function App() {
     setMovingBtnCaptured(false);
     setClickSpamDone(false);
     setTextExactVal('');
+    setReactionSpeedPassed(false);
+    setWireCutPassed(false);
+    setMazeRunnerPassed(false);
+    setCatchApplesPassed(false);
+    setPatternMemoryPassed(false);
     setErrorMessage(null);
   }, []);
 
@@ -101,6 +139,18 @@ export default function App() {
     sound.playSuccess();
     resetLevelState();
     setCurrentLevelIndex((prev) => Math.min(prev + 1, GAME_LEVELS.length - 1));
+  }, [resetLevelState]);
+
+  // Code Override Warp to level (from InfoModal 6741 panel)
+  const handleJumpToLevel = useCallback((levelNum: number) => {
+    sound.playSuccess();
+    resetLevelState();
+    setIsInitialCheckboxChecked(true);
+    setIsModalOpen(true);
+    setShowFakeChatGPT(false);
+    const targetIdx = Math.max(0, Math.min(GAME_LEVELS.length - 1, levelNum - 1));
+    setCurrentLevelIndex(targetIdx);
+    setShowInfoModal(false);
   }, [resetLevelState]);
 
   // Initial Checkbox Click
@@ -442,6 +492,51 @@ export default function App() {
         break;
       }
 
+      case 'reaction_speed': {
+        if (reactionSpeedPassed) {
+          advanceLevel();
+        } else {
+          triggerError('Human reaction reflex not yet verified! Click when green.');
+        }
+        break;
+      }
+
+      case 'wire_cut': {
+        if (wireCutPassed) {
+          advanceLevel();
+        } else {
+          triggerError('Cut the designated circuit wire before verifying.');
+        }
+        break;
+      }
+
+      case 'maze_runner': {
+        if (mazeRunnerPassed) {
+          advanceLevel();
+        } else {
+          triggerError('Navigate cursor from START to GOAL without touching walls.');
+        }
+        break;
+      }
+
+      case 'catch_apples': {
+        if (catchApplesPassed) {
+          advanceLevel();
+        } else {
+          triggerError('Catch all required organic apples while avoiding microchips.');
+        }
+        break;
+      }
+
+      case 'pattern_memory': {
+        if (patternMemoryPassed) {
+          advanceLevel();
+        } else {
+          triggerError('Memorize and recall the 3 golden pattern tiles.');
+        }
+        break;
+      }
+
       default:
         advanceLevel();
         break;
@@ -455,6 +550,8 @@ export default function App() {
     setIsInitialCheckboxChecked(false);
     setIsSpinnerActive(false);
     setIsModalOpen(false);
+    setShowFakeChatGPT(false);
+    setShowNewTabPrompt(true);
     resetLevelState();
   };
 
@@ -519,6 +616,14 @@ export default function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* LEVEL 1 POPUP: OPEN IN NEW TAB OR STAY */}
+      {showNewTabPrompt && currentLevelIndex <= 1 && (
+        <NewTabPromptModal
+          onOpenNewTab={() => setShowNewTabPrompt(false)}
+          onDismiss={() => setShowNewTabPrompt(false)}
+        />
       )}
 
       {/* 2. RECAPTCHA ACTIVE MODAL */}
@@ -661,6 +766,33 @@ export default function App() {
               />
             )}
 
+            {currentLevel.type === 'reaction_speed' && (
+              <ReactionSpeedChallenge onSuccessState={setReactionSpeedPassed} />
+            )}
+
+            {currentLevel.type === 'wire_cut' && (
+              <WireCutChallenge
+                targetWireColor={currentLevel.targetWireColor}
+                instructionText={currentLevel.wireInstruction}
+                onSuccessState={setWireCutPassed}
+              />
+            )}
+
+            {currentLevel.type === 'maze_runner' && (
+              <MazeRunnerChallenge onSuccessState={setMazeRunnerPassed} />
+            )}
+
+            {currentLevel.type === 'catch_apples' && (
+              <CatchApplesChallenge
+                targetApples={currentLevel.targetApples || 3}
+                onSuccessState={setCatchApplesPassed}
+              />
+            )}
+
+            {currentLevel.type === 'pattern_memory' && (
+              <PatternMemoryChallenge onSuccessState={setPatternMemoryPassed} />
+            )}
+
             {/* Error Notification Banner */}
             {errorMessage && (
               <div className="absolute bottom-2 left-2 right-2 bg-[#d93025] text-white text-xs font-medium py-2 px-3 rounded shadow-lg flex items-center justify-center text-center animate-in fade-in slide-in-from-bottom-2 duration-150 z-20">
@@ -683,6 +815,7 @@ export default function App() {
               <InfoModal
                 hint={currentLevel.hint}
                 onClose={() => setShowInfoModal(false)}
+                onJumpToLevel={handleJumpToLevel}
               />
             )}
           </div>
@@ -738,9 +871,19 @@ export default function App() {
         </div>
       )}
 
-      {/* 3. VICTORY CERTIFICATE OF HUMANITY */}
+      {/* 3. VICTORY CERTIFICATE OF HUMANITY OR FAKE CHATGPT */}
       {isLastLevel && (
-        <CertificateView onRestart={handleRestart} />
+        showFakeChatGPT ? (
+          <FakeChatGPTView
+            onRestart={handleRestart}
+            onViewCertificate={() => setShowFakeChatGPT(false)}
+          />
+        ) : (
+          <CertificateView
+            onRestart={handleRestart}
+            onOpenChatGPT={() => setShowFakeChatGPT(true)}
+          />
+        )
       )}
     </div>
   );
